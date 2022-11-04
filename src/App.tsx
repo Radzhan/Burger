@@ -84,6 +84,7 @@ function App() {
                     {btnBurger}
                 </div>
                 <div className='block-with-burger'>
+                        <button onClick={deleteBurger}>delete Burger</button>
                     <div className="Burger">
                         <div className="BreadTop">
                             <div className="Seeds1"></div>
@@ -91,7 +92,6 @@ function App() {
                         </div>
                         {btnIngredient}
                         <div className="BreadBottom"></div>
-                        <button onClick={deleteBurger}>delete Burger</button>
                     </div>
                 </div>
             </div>

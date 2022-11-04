@@ -120,6 +120,10 @@ img{
   border-radius: 20px;
 }
 
+.block-burger{
+  border: 1px solid gray;
+}
+
 .Salad {
   width: 50%;
   height: 7%;
