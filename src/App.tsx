@@ -5,6 +5,7 @@ import saladImage from './assets/salad.jpg';
 import cheeseImage from './assets/cheese.jpg';
 import baconImage from './assets/bacon.jpg';
 import Burger from "./burger";
+import Ingredients from "./ingredients";
 
 function App() {
     type Ingredient = {
@@ -13,10 +14,10 @@ function App() {
         image: string
     }
     const INGREDIENTS: Ingredient[] = [
-        {name: 'Bacon', price: 60, image: meatImage},
+        {name: 'Bacon', price: 60, image:baconImage },
         {name: 'Salad', price: 10, image: saladImage},
-        {name: 'Meat', price: 80, image: cheeseImage},
-        {name: 'Cheese', price: 50, image: baconImage},
+        {name: 'Meat', price: 80, image: meatImage},
+        {name: 'Cheese', price: 50, image:cheeseImage },
     ];
 
     const [ingredients, setIngredients] = useState([
@@ -36,16 +37,21 @@ function App() {
         return acc
     }, 30)
 
+    const [ingre, setIngre ] = useState([''])
+
+
     const value = (index: number) => {
         const copyIngridients = [...ingredients];
         copyIngridients[index].count++
         setIngredients(copyIngridients)
+        const copyIngre = [...ingre]
+        copyIngre.push(copyIngridients[index].name)
+        setIngre(copyIngre)
     }
 
     const valueOfCol = (index: number) => {
         return ingredients[index].count
     }
-
     const dealite = (index: number) => {
         const copyIngridients = [...ingredients];
         if (copyIngridients[index].count !== 0){
@@ -54,9 +60,21 @@ function App() {
         setIngredients(copyIngridients)
     }
 
+    const name = (index : number) => {
+        return ingredients[index].name
+    }
+
     let btnBurger = ingredients.map((item, index) => (
-        <Burger src={INGREDIENTS[index].image} value={() => value (index)} col={valueOfCol(index)} dealite={() => dealite(index)}/>
+        <Burger name={name(index)} src={INGREDIENTS[index].image} value={() => value (index)} col={valueOfCol(index)} dealite={() => dealite(index)}/>
     ))
+
+    let btnIngredient = ingre.map(item => (
+        <Ingredients ingredient={item}/>
+    ))
+
+    const deleteBurger = () => {
+        setIngre([''])
+    }
 
     return (
         <div className="App">
@@ -71,12 +89,15 @@ function App() {
                             <div className="Seeds1"></div>
                             <div className="Seeds2"></div>
                         </div>
+                        {btnIngredient}
                         <div className="BreadBottom"></div>
+                        <button onClick={deleteBurger}>delete Burger</button>
                     </div>
                 </div>
             </div>
         </div>
     );
+
 }
 
 export default App;

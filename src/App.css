@@ -121,7 +121,7 @@ img{
 }
 
 .Salad {
-  width: 5%;
+  width: 50%;
   height: 7%;
   margin: 2% auto;
   background: linear-gradient(#228c1d, #91ce50);
@@ -138,8 +138,7 @@ img{
 .Burger {
   width: 100%;
   margin: auto;
-  height: 250px;
-  overflow: auto;
+  height: 100%;
   text-align: center;
   font-weight: bold;
   font-size: 1.2rem;
